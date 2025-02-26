@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHP Questionnaire</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; text-align: center; }
+        .grey { background-color: lightgrey; }
+    </style>
+</head>
+<body>
+    <h2>AHP Questionnaire</h2>
+    <form id="ahpForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <table>
+            <tr>
+                <th>Criterion</th>
+                <th>9</th> <th>8</th> <th>7</th> <th>6</th> <th>5</th> <th>4</th> <th>3</th> <th>2</th> <th>1</th>
+                <th class="grey">Neutral</th>
+                <th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th> <th>6</th> <th>7</th> <th>8</th> <th>9</th>
+            </tr>
+            <tr>
+                <td>Criterion 1</td>
+                <td><input type="radio" name="criterion_1" value="9"></td>
+                <td><input type="radio" name="criterion_1" value="8"></td>
+                <td><input type="radio" name="criterion_1" value="7"></td>
+                <td><input type="radio" name="criterion_1" value="6"></td>
+                <td><input type="radio" name="criterion_1" value="5"></td>
+                <td><input type="radio" name="criterion_1" value="4"></td>
+                <td><input type="radio" name="criterion_1" value="3"></td>
+                <td><input type="radio" name="criterion_1" value="2"></td>
+                <td><input type="radio" name="criterion_1" value="1"></td>
+                <td class="grey"></td>
+                <td><input type="radio" name="criterion_1" value="-1"></td>
+                <td><input type="radio" name="criterion_1" value="-2"></td>
+                <td><input type="radio" name="criterion_1" value="-3"></td>
+                <td><input type="radio" name="criterion_1" value="-4"></td>
+                <td><input type="radio" name="criterion_1" value="-5"></td>
+                <td><input type="radio" name="criterion_1" value="-6"></td>
+                <td><input type="radio" name="criterion_1" value="-7"></td>
+                <td><input type="radio" name="criterion_1" value="-8"></td>
+                <td><input type="radio" name="criterion_1" value="-9"></td>
+            </tr>
+            <!-- Add More Rows for Other Criteria -->
+        </table>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("ahpForm").onsubmit = async function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+
+            let response = await fetch("/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            let result = await response.json();
+            if (response.ok) {
+                alert("✅ " + result.message);
+            } else {
+                alert("⚠️ " + result.error);
+            }
+        };
+    </script>
+</body>
+</html>
