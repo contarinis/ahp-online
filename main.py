@@ -30,5 +30,14 @@ def submit():
 
     return jsonify({"message": "Response saved successfully!"})
 
+@app.route("/submissions")
+def view_submissions():
+    import pandas as pd
+    try:
+        df = pd.read_csv("submissions.csv")
+        return df.to_html()  # Show as an HTML table
+    except:
+        return "No submissions found."
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
