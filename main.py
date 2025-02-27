@@ -61,7 +61,7 @@ def submit():
         writer = csv.writer(file)
         writer.writerow(data)
 
-    return jsonify({"message": "✅ Η απάντησή σας καταγράφηκε επιτυχώς!"}), 200
+    return jsonify({"message": "Η απάντησή σας καταγράφηκε επιτυχώς!"}), 200
 
 @app.route("/responses")
 def view_submissions():

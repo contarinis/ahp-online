@@ -171,7 +171,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="tableBody1"></tbody>
+                <tbody id="cargo"></tbody>
             </table>
         </div>
 
@@ -193,7 +193,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="tableBody2"></tbody>
+                <tbody id="passenger"></tbody>
             </table>
         </div>
 
@@ -313,8 +313,8 @@
                 });
             }
 
-            generateTableRows("tableBody1", cargoPairs);
-            generateTableRows("tableBody2", passengerPairs);
+            generateTableRows("cargo", cargoPairs);
+            generateTableRows("passenger", passengerPairs);
         });
 
         document.getElementById("ahpForm").onsubmit = async function(event) {
