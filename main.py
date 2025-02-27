@@ -10,11 +10,12 @@ CSV_FILE = "responses.csv"  # CSV file to store responses
 if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, "w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.writerow(["email"] + 
-                [f"cargo_{i}" for i in range(1, 11)] + 
-                [f"passenger_{i}" for i in range(1, 11)] + 
-                ["gender", "age", "education", "education_other", 
-                 "employment", "employment_other", "experience", "gdpr"])
+        writer.writerow([
+            "email", "gender", "age", "education", "education_other",
+            "employment", "employment_other", "experience", "gdpr",
+            *[f"cargo_{i}" for i in range(1, 11)],  
+            *[f"passenger_{i}" for i in range(1, 11)]
+        ])
         
 @app.route("/")
 def index():
