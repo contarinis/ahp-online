@@ -11,8 +11,8 @@ if not os.path.exists(CSV_FILE):
     with open(CSV_FILE, "w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(["email"] + 
-                [f"criterion_cargo_{i}" for i in range(1, 11)] + 
-                [f"criterion_passenger_{i}" for i in range(1, 11)] + 
+                [f"cargo_{i}" for i in range(1, 11)] + 
+                [f"passenger_{i}" for i in range(1, 11)] + 
                 ["gender", "age", "education", "education_other", 
                  "employment", "employment_other", "experience", "gdpr"])
         

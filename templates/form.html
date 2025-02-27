@@ -300,13 +300,13 @@
 
                     // Generate radio buttons (9 to 1, Neutral, 1 to 9)
                     for (let i = 9; i >= 2; i--) {
-                        row.innerHTML += `<td><input type="radio" name="criterion_${tableId}_${index}" value="-${i}"></td>`;
+                        row.innerHTML += `<td><input type="radio" name="${tableId}_${index}" value="-${i}"></td>`;
                     }
 
-                    row.innerHTML += `<td class="grey"><input type="radio" name="criterion_${tableId}_${index}" value="1" checked></td>`;
+                    row.innerHTML += `<td class="grey"><input type="radio" name="${tableId}_${index}" value="1" checked></td>`;
 
                     for (let i = 2; i <= 9; i++) {
-                        row.innerHTML += `<td><input type="radio" name="criterion_${tableId}_${index}" value="${i}"></td>`;
+                        row.innerHTML += `<td><input type="radio" name="${tableId}_${index}" value="${i}"></td>`;
                     }
                     row.innerHTML += `<td>${pair[1]}</td>`;
                     tableBody.appendChild(row);
