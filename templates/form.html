@@ -4,56 +4,329 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AHP Questionnaire</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
     <style>
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid black; padding: 10px; text-align: center; }
-        .grey { background-color: lightgrey; }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        margin: 20px;
+    }
+    h2 {
+        text-align: center;
+        color: #007bff;
+    }
+    .logo-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .logo-container img {
+        max-width: 100%;
+        height: auto;
+    }
+    .intro {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-left: 4px solid #007bff;
+        margin-bottom: 20px;
+    }
+    /* Make the table responsive */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    /* General table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    /* Style table headers */
+    th {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Style table rows */
+    td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    /* Apply grey background to the middle column */
+    td.grey {
+        background-color: lightgrey !important;
+        font-weight: bold;
+    }
+
+    /* Alternative row shading for readability */
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Increase the size of radio buttons */
+    input[type="radio"] {
+        transform: scale(1.3);
+        cursor: pointer;
+    }
+
+    /* Make sure hover works */
+    tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        th, td {
+            font-size: 14px;
+            padding: 6px;
+        }
+        input[type="radio"] {
+            transform: scale(1);
+        }
+    }
+
+
     </style>
 </head>
-<body>
-    <h2>AHP Questionnaire</h2>
-    <form id="ahpForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+<body class="container mt-4">
 
-        <table>
-            <tr>
-                <th>Criterion</th>
-                <th>9</th> <th>8</th> <th>7</th> <th>6</th> <th>5</th> <th>4</th> <th>3</th> <th>2</th> <th>1</th>
-                <th class="grey">Neutral</th>
-                <th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th> <th>6</th> <th>7</th> <th>8</th> <th>9</th>
-            </tr>
-            <tr>
-                <td>Criterion 1</td>
-                <td><input type="radio" name="criterion_1" value="9"></td>
-                <td><input type="radio" name="criterion_1" value="8"></td>
-                <td><input type="radio" name="criterion_1" value="7"></td>
-                <td><input type="radio" name="criterion_1" value="6"></td>
-                <td><input type="radio" name="criterion_1" value="5"></td>
-                <td><input type="radio" name="criterion_1" value="4"></td>
-                <td><input type="radio" name="criterion_1" value="3"></td>
-                <td><input type="radio" name="criterion_1" value="2"></td>
-                <td><input type="radio" name="criterion_1" value="1"></td>
-                <td class="grey"></td>
-                <td><input type="radio" name="criterion_1" value="-1"></td>
-                <td><input type="radio" name="criterion_1" value="-2"></td>
-                <td><input type="radio" name="criterion_1" value="-3"></td>
-                <td><input type="radio" name="criterion_1" value="-4"></td>
-                <td><input type="radio" name="criterion_1" value="-5"></td>
-                <td><input type="radio" name="criterion_1" value="-6"></td>
-                <td><input type="radio" name="criterion_1" value="-7"></td>
-                <td><input type="radio" name="criterion_1" value="-8"></td>
-                <td><input type="radio" name="criterion_1" value="-9"></td>
-            </tr>
-            <!-- Add More Rows for Other Criteria -->
-        </table>
+    <!-- NAVGREEN Logo -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://navgreen.gr/wp-content/uploads/2023/06/navgreen_logo1a.png" alt="NAVGREEN Logo" style="max-width: 250px; height: auto;">
+    </div>
 
-        <button type="submit">Submit</button>
+    <!-- Partners' Logos -->
+    <div style="text-align: center; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΕΘΝΙΚΟ-ΜΕΤΣΟΒΙΟ-ΠΟΛΥΤΕΧΝΕΙΟ-q8hvzhzxjf31c1uziuoak500b5y25ptwikntpprru8.jpg" alt="ΕΘΝΙΚΟ ΜΕΤΣΟΒΙΟ ΠΟΛΥΤΕΧΝΕΙΟ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/2.-ΔΗΜΟΚΡΙΤΟΣ-q8hvzf6eywz6d7z2zbgeunpmj0byimipi6pd9vvycw.jpg" alt="ΕΚΕΦΕ ΔΗΜΟΚΡΙΤΟΣ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΕΛΚΕΘΕ-q8hvzhzxjf31c1uziuoak500b5y25ptwikntpprru8.jpg" alt="ΕΛΛΗΝΙΚΟ ΚΕΝΤΡΟ ΘΑΛΑΣΣΙΩΝ ΕΡΕΥΝΩΝ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΕΘΝΙΚΟ-ΑΣΤΕΡΟΣΚΟΠΕΙΟ-ΑΘΗΝΩΝ-q8hvzh23cl1r0fwcoc9nzn8jps2oy0q66g0c8ft60g.jpg" alt="ΕΘΝΙΚΟ ΑΣΤΕΡΟΣΚΟΠΕΙΟ ΑΘΗΝΩΝ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΠΑΝΕΠΙΣΤΗΜΙΟ-ΑΙΓΑΙΟΥ-Sq-q8hvzixrq94bnntmdd2x4mrgwjtfdexmupbb6zqdo0.jpg" alt="ΠΑΝΕΠΙΣΤΗΜΙΟ ΑΙΓΑΙΟΥ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΑΡΙΣΤΟΤΕΛΕΙΟ-ΠΑΝΕΠΙΣΤΗΜΙΟ-ΘΕΣΣΑΛΟΝΙΚΗΣ-Sq-q8hvzg495r0gotxpttv1f5h34e7bqbmfubcur5uk6o.jpg" alt="ΑΡΙΣΤΟΤΕΛΕΙΟ ΠΑΝΕΠΙΣΤΗΜΙΟ ΘΕΣΣΑΛΟΝΙΚΗΣ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΠΑΝΕΠΙΣΤΗΜΙΟ-ΠΕΙΡΑΙΩΣ-Sq-q8hvzjvlx35lz9s97vhjp4ixhxosl41d6tyso9ozhs.jpg" alt="ΠΑΝΕΠΙΣΤΗΜΙΟ ΠΕΙΡΑΙΩΣ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΟΙΚΟΝΟΜΙΚΟ-ΠΑΝΕΠΙΣΤΗΜΙΟ-ΑΘΗΝΩΝ-WHITE-Sq-q8hvzixrq94bnntmdd2x4mrgwjtfdexmupbb6zqdo0.jpg" alt="ΟΙΚΟΝΟΜΙΚΟ ΠΑΝΕΠΙΣΤΗΜΙΟ ΑΘΗΝΩΝ" style="max-width: 50px; height: 50px;">
+        <img src="https://navgreen.gr/wp-content/uploads/elementor/thumbs/ΑΚΑΔΗΜΙΑ-ΑΘΗΝΩΝ-Sq-q8hvzg495r0gotxpttv1f5h34e7bqbmfubcur5uk96.jpg" alt="ΑΚΑΔΗΜΙΑ ΑΘΗΝΩΝ" style="max-width: 50px; height: 50px;">
+    </div>
+
+    <h2>ΔΟΜΗΜΕΝΟ ΕΡΩΤΗΜΑΤΟΛΟΓΙΟ ΕΚΤΙΜΗΣΗΣ ΒΑΡΥΤΗΤΩΝ ΚΡΙΤΗΡΙΩΝ</h2>
+    <div class="intro">
+        <p>
+            Το έργο <strong>NAVGREEN</strong> στοχεύει στην ανάπτυξη και εφαρμογή καινοτόμων τεχνολογιών για τη 
+            μείωση του ανθρακικού αποτυπώματος της ναυτιλίας. Η συγκεκριμένη μελέτη αποσκοπεί στην αξιολόγηση 
+            εναλλακτικών ενεργειακών λύσεων με τη χρήση της <strong>Αναλυτικής Ιεραρχικής Διαδικασίας (AHP)</strong>, επιτρέποντας 
+            την ποσοτικοποίηση της σχετικής βαρύτητας των βασικών κριτηρίων αξιολόγησης.
+        </p>
+        <p>
+            Καλείστε να συμπληρώσετε το ερωτηματολόγιο συγκρίνοντας μεταξύ τους ανά ζεύγη (ως προς την σχετική τους σημαντικότητα 
+            για την επιλογή ενεργειακής λύσης για <strong>φορτηγά</strong> και <strong>επιβατηγά</strong> πλοία αντίστοιχα) τα εξής πέντε κριτήρια:
+        </p>
+        <ul>
+            <li><strong>Κόστος</strong> (CapEx, OpEx, δικαιώματα εκπομπών CO₂)</li>
+            <li><strong>Τεχνολογική Ωριμότητα</strong> (επίπεδο TRL, δυνατότητα άμεσης εφαρμογής)</li>
+            <li><strong>Ασφάλεια</strong> (επιχειρησιακή ασφάλεια, διαχείριση κινδύνου)</li>
+            <li><strong>Ανθρακικό αποτύπωμα</strong> (μείωση εκπομπών CO₂)</li>
+            <li><strong>Κοινωνική αποδοχή</strong> (αποδοχή από κοινωνικούς φορείς και τη ναυτιλιακή κοινότητα)</li>
+        </ul>
+        <p>
+            Καταγράψτε την προτίμησή σας στους κάτωθι δύο πίνακες (ο πρώτος αφορά στην περίπτωση φορτηγών πλοίων 
+            και ο δεύτερος στην περίπτωση επιβατηγών πλοίων).
+        </p>
+        <p>
+            Κατά τη σύγκριση χρησιμοποιείται κλίμακα <strong>1 έως 9</strong> (όπου <strong>1 = ισοδύναμα</strong>, 
+            <strong>9 = απόλυτη προτίμηση του ενός κριτηρίου έναντι του άλλου</strong>).
+        </p>
+        <p>
+            Για τις ανάγκες της έρευνας τηρούνται πλήρως οι σχετικές διατάξεις για το σεβασμό των προσωπικών δεδομένων.
+        </p>
+        <p>
+            Σε περίπτωση που έχετε οποιαδήποτε απορία σχετικά με τη συμπλήρωση του ερωτηματολογίου μπορείτε να απευθυνθείτε στο 
+            email: <strong>gremoundos@aegean.gr</strong>
+        </p>
+    </div>
+
+    <form id="ahpForm" class="p-3 border rounded bg-light">
+        <!-- Πίνακας 1. Φορτηγά Πλοία -->
+        <h3 class="mt-4">Πίνακας 1. Φορτηγά Πλοία</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Κριτήριο</th>
+                        <th colspan="17">Βαθμός σχετικής σημαντικότητας</th>
+                        <th>Κριτήριο</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>9</th> <th>8</th> <th>7</th> <th>6</th> <th>5</th> <th>4</th> <th>3</th> <th>2</th>
+                        <th class="grey">1</th>
+                        <th>2</th> <th>3</th> <th>4</th> <th>5</th> <th>6</th> <th>7</th> <th>8</th> <th>9</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody1"></tbody>
+            </table>
+        </div>
+
+        <!-- Πίνακας 2. Επιβατηγά Πλοία -->
+        <h3 class="mt-4">Πίνακας 2. Επιβατηγά Πλοία</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Κριτήριο</th>
+                        <th colspan="17">Βαθμός σχετικής σημαντικότητας</th>
+                        <th>Κριτήριο</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>9</th> <th>8</th> <th>7</th> <th>6</th> <th>5</th> <th>4</th> <th>3</th> <th>2</th>
+                        <th class="grey">1</th>
+                        <th>2</th> <th>3</th> <th>4</th> <th>5</th> <th>6</th> <th>7</th> <th>8</th> <th>9</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody2"></tbody>
+            </table>
+        </div>
+
+        <!-- Πίνακας 3. Δημογραφικά Στοιχεία -->
+        <h3 class="mt-4">Πίνακας 3. Δημογραφικά Στοιχεία</h3>
+
+        <div class="mb-3">
+            <label class="form-label">Φύλο:</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="gender" value="Άνδρας" required> Άνδρας
+                <input type="radio" name="gender" value="Γυναίκα" required> Γυναίκα
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Ηλικία:</label>
+            <div class="d-flex flex-wrap gap-3">
+                <input type="radio" name="age" value="<18" required> <18
+                <input type="radio" name="age" value="18-24" required> 18-24
+                <input type="radio" name="age" value="25-34" required> 25-34
+                <input type="radio" name="age" value="35-44" required> 35-44
+                <input type="radio" name="age" value="45-54" required> 45-54
+                <input type="radio" name="age" value="55-64" required> 55-64
+                <input type="radio" name="age" value=">65" required> >65
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Εκπαίδευση:</label>
+            <div class="d-flex flex-wrap gap-3">
+                <input type="radio" name="education" value="Γυμνάσιο" required> Γυμνάσιο
+                <input type="radio" name="education" value="Λύκειο" required> Λύκειο
+                <input type="radio" name="education" value="ΙΕΚ" required> ΙΕΚ
+                <input type="radio" name="education" value="ΑΕΙ/ΤΕΙ" required> ΑΕΙ/ΤΕΙ
+                <input type="radio" name="education" value="Master" required> Master
+                <input type="radio" name="education" value="PhD" required> PhD
+                <input type="radio" name="education" value="Άλλο" required> Άλλο:
+                <input type="text" name="education_other" class="form-control w-auto">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Κλάδος Απασχόλησης:</label>
+            <div class="d-flex flex-wrap gap-3">
+                <input type="radio" name="employment" value="Διαχείριση Πλοίων" required> Διαχείριση Πλοίων
+                <input type="radio" name="employment" value="Ναυτικός" required> Ναυτικός
+                <input type="radio" name="employment" value="Εταιρεία υποστήριξης" required> Εταιρεία υποστήριξης
+                <input type="radio" name="employment" value="Λιμενική Βιομηχανία" required> Λιμενική Βιομηχανία
+                <input type="radio" name="employment" value="Ακαδημαϊκός/Ερευνητής" required> Ακαδημαϊκός/Ερευνητής
+                <input type="radio" name="employment" value="Κράτος/Διοίκηση" required> Κράτος/Διοίκηση
+                <input type="radio" name="employment" value="Άλλο" required> Άλλο:
+                <input type="text" name="employment_other" class="form-control w-auto">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Έτη Εμπειρίας:</label>
+            <div class="d-flex flex-wrap gap-3">
+                <input type="radio" name="experience" value="<10" required> <10
+                <input type="radio" name="experience" value="10 - 20" required> 10 - 20
+                <input type="radio" name="experience" value=">20" required> >20
+            </div>
+        </div>
+
+        <div class="mb-3 col-md-4">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        
+        <!-- GDPR Consent Checkbox -->
+        </div>
+            <label>
+                <input type="checkbox" id="gdpr" name="gdpr" required>
+                Συμφωνώ με την επεξεργασία των προσωπικών μου δεδομένων σύμφωνα με τον <a href="https://eur-lex.europa.eu/legal-content/EL/TXT/?uri=legissum:310401_2" target="_blank">Κανονισμό GDPR</a>.
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Υποβολή</button>
     </form>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cargoPairs = [
+                ["ΚΟΣΤΟΣ", "ΤΕΧΝΟΛΟΓΙΚΗ ΩΡΙΜΟΤΗΤΑ"],
+                ["ΚΟΣΤΟΣ", "ΑΣΦΑΛΕΙΑ"],
+                ["ΚΟΣΤΟΣ", "ΑΝΘΡΑΚΙΚΟ ΑΠΟΤΥΠΩΜΑ"],
+                ["ΚΟΣΤΟΣ", "ΚΟΙΝΩΝΙΚΗ ΑΠΟΔΟΧΗ"],
+                ["ΤΕΧΝΟΛΟΓΙΚΗ ΩΡΙΜΟΤΗΤΑ", "ΑΣΦΑΛΕΙΑ"],
+                ["ΤΕΧΝΟΛΟΓΙΚΗ ΩΡΙΜΟΤΗΤΑ", "ΑΝΘΡΑΚΙΚΟ ΑΠΟΤΥΠΩΜΑ"],
+                ["ΤΕΧΝΟΛΟΓΙΚΗ ΩΡΙΜΟΤΗΤΑ", "ΚΟΙΝΩΝΙΚΗ ΑΠΟΔΟΧΗ"],
+                ["ΑΣΦΑΛΕΙΑ", "ΑΝΘΡΑΚΙΚΟ ΑΠΟΤΥΠΩΜΑ"],
+                ["ΑΣΦΑΛΕΙΑ", "ΚΟΙΝΩΝΙΚΗ ΑΠΟΔΟΧΗ"],
+                ["ΑΝΘΡΑΚΙΚΟ ΑΠΟΤΥΠΩΜΑ", "ΚΟΙΝΩΝΙΚΗ ΑΠΟΔΟΧΗ"]
+            ];
+
+            const passengerPairs = cargoPairs;
+
+            function generateTableRows(tableId, pairs) {
+                const tableBody = document.getElementById(tableId);
+
+                pairs.forEach((pair, index) => {
+                    let row = document.createElement("tr");
+                    row.innerHTML = `<td>${pair[0]}</td>`;
+
+                    // Generate radio buttons (9 to 1, Neutral, 1 to 9)
+                    for (let i = 9; i >= 2; i--) {
+                        row.innerHTML += `<td><input type="radio" name="criterion_${tableId}_${index}" value="-${i}"></td>`;
+                    }
+
+                    row.innerHTML += `<td class="grey"><input type="radio" name="criterion_${tableId}_${index}" value="1" checked></td>`;
+
+                    for (let i = 2; i <= 9; i++) {
+                        row.innerHTML += `<td><input type="radio" name="criterion_${tableId}_${index}" value="${i}"></td>`;
+                    }
+                    row.innerHTML += `<td>${pair[1]}</td>`;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            generateTableRows("tableBody1", cargoPairs);
+            generateTableRows("tableBody2", passengerPairs);
+        });
+
         document.getElementById("ahpForm").onsubmit = async function(event) {
             event.preventDefault();
+
+            // GDPR checkbox validation
+            let gdprConsent = document.getElementById("gdpr");
+            if (!gdprConsent.checked) {
+                alert("⚠️ Πρέπει να συμφωνήσετε με την επεξεργασία των προσωπικών δεδομένων για να συνεχίσετε.");
+                return;
+            }
+
             let formData = new FormData(this);
 
             let response = await fetch("/submit", {
